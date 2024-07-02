@@ -1,0 +1,6 @@
+@CatacombApp.Server_HostAddress = http://localhost:5191
+
+GET {{CatacombApp.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

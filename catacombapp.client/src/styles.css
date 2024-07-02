@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.container-bar {
+  background-color: #333333;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+  .container-bar img {
+    height: 80%;
+  }
