@@ -1,0 +1,9 @@
+<section class="cta-box">
+  <h3 style="color:white;">{{ ctaOutput[0].title }}</h3>
+  <div class="cta-card">
+    <img src="{{ ctaOutput[0].image }}"/>
+  </div>
+  @if (ctaOutput[0].buttonType === "AMZN") {
+    <button class="cta-btn"><strong>Buy Now on Amazon ></strong></button>
+  }
+</section>

@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeroComponent } from './hero/hero.component';
 import { HeaderComponent } from './header/header.component';
 import { InfoComponent } from './info/info.component';
+import { CtaComponent } from './cta/cta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroComponent,
     HeaderComponent,
-    InfoComponent
+    InfoComponent,
+    CtaComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
