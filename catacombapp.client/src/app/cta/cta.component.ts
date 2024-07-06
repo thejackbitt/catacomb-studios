@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-const card = document.querySelector(".cta-card");
-card.addEventListener("click", card.classList.add("cta-clicked");
-
 @Component({
   selector: 'app-cta',
   templateUrl: './cta.component.html',
@@ -10,4 +7,15 @@ card.addEventListener("click", card.classList.add("cta-clicked");
 })
 export class CtaComponent {
   @Input() ctaOutput: any;
+
+  public ctaClicked = false;
+
+  public sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  public async changeCtaClass() {
+    this.ctaClicked = !this.ctaClicked;
+    await this.sleep(150);
+    this.ctaClicked = !this.ctaClicked;
+
+  }
 }

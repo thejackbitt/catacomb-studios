@@ -460,19 +460,19 @@
   },
   "packageFolders": {
     "C:\\Users\\jackb\\.nuget\\packages\\": {},
-    "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Coding_Projects\\net_projects\\catacomb-studios\\CatacombApp.Server\\CatacombApp.Server.csproj",
+      "projectUniqueName": "C:\\Coding\\catacomb-studios\\CatacombApp.Server\\CatacombApp.Server.csproj",
       "projectName": "CatacombApp.Server",
-      "projectPath": "F:\\Coding_Projects\\net_projects\\catacomb-studios\\CatacombApp.Server\\CatacombApp.Server.csproj",
+      "projectPath": "C:\\Coding\\catacomb-studios\\CatacombApp.Server\\CatacombApp.Server.csproj",
       "packagesPath": "C:\\Users\\jackb\\.nuget\\packages\\",
-      "outputPath": "F:\\Coding_Projects\\net_projects\\catacomb-studios\\CatacombApp.Server\\obj\\",
+      "outputPath": "C:\\Coding\\catacomb-studios\\CatacombApp.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\jackb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -484,7 +484,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -536,7 +535,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
