@@ -9,7 +9,11 @@
     "test": "ng test",
     "prestart": "node aspnetcore-https",
     "start:windows": "ng serve --ssl --ssl-cert \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem\" --ssl-key \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.key\" --host=127.0.0.1",
-    "start:default": "ng serve --ssl --ssl-cert \"$HOME/.aspnet/https/${npm_package_name}.pem\" --ssl-key \"$HOME/.aspnet/https/${npm_package_name}.key\" --host=127.0.0.1"
+    "start:default": "ng serve --ssl --ssl-cert \"$HOME/.aspnet/https/${npm_package_name}.pem\" --ssl-key \"$HOME/.aspnet/https/${npm_package_name}.key\" --host=127.0.0.1",
+    "dev:ssr": "ng run ClientApp:serve-ssr",
+    "serve:ssr": "node dist/catacombapp/server/main.js",
+    "build:ssr": "ng build && ng run catacombapp:server",
+    "build:ssr:prod": "ng build --configuration=production && ng run catacombapp:server:production"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +25,8 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@ngx-translate/http-loader": "^8.0.0",
+    "aspnet-prerendering": "^3.0.1",
     "jest-editor-support": "*",
     "postcss": "^8.4.39",
     "run-script-os": "*",

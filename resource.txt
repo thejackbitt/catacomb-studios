@@ -1,0 +1,2 @@
+Follow this guide:
+https://pieterjandeclippel.medium.com/server-side-rendering-in-asp-net-core-angular-2024-version-a617a83324a1
