@@ -8,6 +8,7 @@ import { HeroComponent } from './hero/hero.component';
 import { HeaderComponent } from './header/header.component';
 import { InfoComponent } from './info/info.component';
 import { CtaComponent } from './cta/cta.component';
+import { BurgerComponent } from './burger/burger.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CtaComponent } from './cta/cta.component';
     HeroComponent,
     HeaderComponent,
     InfoComponent,
-    CtaComponent
+    CtaComponent,
+    BurgerComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

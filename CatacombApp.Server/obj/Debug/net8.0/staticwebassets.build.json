@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "Ps/Uex8Iw+BzhZXTIfkWN5c1sT1qnE8jnm47EYnaQb0=",
+  "Hash": "OgQpNXSw6wRIx+93u09tSh5qJQWg/L9evNp7nhagSFU=",
   "Source": "CatacombApp.Server",
   "BasePath": "_content/CatacombApp.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Coding\\catacomb-studios\\catacombapp.client\\catacombapp.client.esproj",
+      "Identity": "F:\\Coding_Projects\\net_projects\\catacomb-studios\\catacombapp.client\\catacombapp.client.esproj",
       "Version": 2,
       "Source": "catacombapp.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

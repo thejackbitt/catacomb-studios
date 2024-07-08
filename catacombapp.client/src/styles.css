@@ -14,6 +14,13 @@ img {
   -ms-user-select: none;
 }
 
+.container-container {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: auto;
+}
+
 .container-bar {
   background-color: #333333;
   position: relative;
