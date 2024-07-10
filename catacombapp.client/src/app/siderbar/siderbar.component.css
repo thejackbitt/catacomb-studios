@@ -1,0 +1,77 @@
+.siderbar-container {
+  width: 500px;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  margin: calc(var(--header-h)) 0px 0px 0px;
+  background: linear-gradient(5deg, #787878 0%, #424242 100%);
+}
+
+.siderbar-options {
+  margin: calc(var(--header-h)/2) 0px 0px 0px;
+  width: 500px;
+  position: relative;
+  right: 0px;
+}
+
+.container-closed {
+    width: 0px;
+}
+
+.options-closed {
+    right: 500px;
+}
+
+.arrow-container svg {
+    display: inline;
+    margin-bottom: 10px;
+}
+
+.link-text {
+    font-size: 2rem;
+}
+
+.link-container {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  transform: translateX(0px);
+  transition: all ease-in-out 0.4s;
+  margin-bottom: 20px;
+}
+
+.link-container:hover {
+  transform: translateX(5px);
+}
+
+.link-container span {
+  color: inherit;
+}
+
+.link-container:hover span {
+  color: white;
+}
+
+.link-container:hover .link-accent {
+  display: initial;
+}
+
+.arrow-component {
+  fill: none;
+  stroke: white;
+  stroke-linejoin: round;
+  stroke-width: 5px;
+}
+
+.arrow-shaft, .arrow-top, .arrow-bottom {
+  transition: all ease-in-out 0.2s;
+  stroke-dasharray: 95;
+  stroke-dashoffset: 95;
+}
+
+.link-container:hover .arrow-shaft, .link-container:hover .arrow-top, .link-container:hover .arrow-bottom {
+  stroke-dashoffset: 0;
+}
+

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SleepService } from '../services/sleep.service';
 
 @Component({
   selector: 'app-cta',
@@ -6,15 +7,15 @@ import { Component, Input } from '@angular/core';
   styleUrl: './cta.component.css'
 })
 export class CtaComponent {
+  constructor(private ss:SleepService) {}
+
   @Input() ctaOutput: any;
 
   public ctaClicked = false;
 
-  public sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
   public async changeCtaClass() {
     this.ctaClicked = !this.ctaClicked;
-    await this.sleep(150);
+    await this.ss.sleep(150);
     this.ctaClicked = !this.ctaClicked;
 
   }
