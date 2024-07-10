@@ -9,12 +9,27 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   ngOnInit() {}
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   imageInput = [
     '/assets/NewFolder/HeroImage1.png',
     '/assets/NewFolder/HeroImage2.png'
   ]
+
+  linkInput = [
+    {
+      preview: 'Test Link 1',
+      link: '#'
+    },
+    {
+      preview: 'Test Link 2',
+      link: '#'
+    },
+    {
+      preview: 'Test Link 3',
+      link: '#'
+    }
+  ];
 
   ctaInput = [
     {
