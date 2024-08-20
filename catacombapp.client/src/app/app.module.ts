@@ -11,6 +11,8 @@ import { InfoComponent } from './info/info.component';
 import { CtaComponent } from './cta/cta.component';
 import { BurgerComponent } from './burger/burger.component';
 import { SiderbarComponent } from './siderbar/siderbar.component';
+import { AccNewComponent } from './acc-new/acc-new.component';
+import { AccLoginComponent } from './acc-login/acc-login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SiderbarComponent } from './siderbar/siderbar.component';
     InfoComponent,
     CtaComponent,
     BurgerComponent,
-    SiderbarComponent
+    SiderbarComponent,
+    AccNewComponent,
+    AccLoginComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

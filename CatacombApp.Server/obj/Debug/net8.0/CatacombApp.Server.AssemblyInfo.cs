@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CatacombApp.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1fb879ca4c9167765f6c7d2db9cb096b0b7af69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9cab125a0950c5b05d0d5f4861b6ce927d3602a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("CatacombApp.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CatacombApp.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
