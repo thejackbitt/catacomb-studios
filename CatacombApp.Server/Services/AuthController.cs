@@ -1,5 +1,7 @@
-﻿using CatacombApp.Server.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using CatacombApp.Server.Services;
+using CatacombApp.Server.Models;
 
 namespace CatacombApp.Server.Controllers
 {
@@ -15,18 +17,19 @@ namespace CatacombApp.Server.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromForm] string username, [FromForm] string email, [FromForm] string password)
+        public async Task<IActionResult> Register([FromForm] string username, [FromForm] string email, [FromForm] string password, [FromForm] int profilePic = 0)
         {
-            _userService.RegisterUser(username, email, password);
+            await _userService.RegisterUser(username, email, password, profilePic);
             return Ok("User registered successfully.");
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromForm] string email, [FromForm] string password)
+        public async Task<IActionResult> Login([FromForm] string email, [FromForm] string password)
         {
-            if (_userService.VerifyPassword(email, password))
+            var user = await _userService.VerifyPassword(email, password);
+            if (user != null)
             {
-                return Ok("Login successful.");
+                return Ok($"Login successful. User {user.Uuid} is currently logged in with profile picture #{user.Pfp}.");
             }
             else
             {

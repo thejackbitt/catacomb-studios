@@ -6,5 +6,7 @@ namespace CatacombApp.Server.Models
     {
         public int Uuid { get; set; }
 
+        public int Pfp { get; set; } = 0;
+
     }
 }
