@@ -11,11 +11,6 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  imageInput = [
-    '/assets/NewFolder/HeroImage1.png',
-    '/assets/NewFolder/HeroImage2.png'
-  ]
-
   linkInput = [
     {
       preview: 'Test Link 1',
@@ -28,16 +23,6 @@ export class AppComponent implements OnInit {
     {
       preview: 'Test Link 3',
       link: '#'
-    }
-  ];
-
-  ctaInput = [
-    {
-      title: "Gonkville",
-      image: '/assets/NewFolder/Preview.png',
-      buttonType: "AMZN",
-      buttonHref: "https://jackbittner.net/",
-      body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
     }
   ];
 
