@@ -58,6 +58,9 @@ namespace CatacombApp.Server.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Pfp")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 

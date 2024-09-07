@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using CatacombApp.Server.Models;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace CatacombApp.Server.Services
 {
@@ -15,10 +16,15 @@ namespace CatacombApp.Server.Services
             _passwordHasher = passwordHasher;
         }
 
-        public void RegisterUser(string username, string email, string password)
+        public async Task RegisterUser(string username, string email, string password, int profilePic = 0)
         {
+            int lastUuid = await _context.Users.MaxAsync(u => (int?)u.Uuid) ?? 0;
+            int newUuid = lastUuid + 1;
+
             var user = new User
             {
+                Uuid = newUuid,
+                Pfp = profilePic,
                 UserName = username,
                 Email = email
             };
@@ -26,20 +32,20 @@ namespace CatacombApp.Server.Services
             user.PasswordHash = _passwordHasher.HashPassword(user, password);
 
             _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public bool VerifyPassword(string email, string enteredPassword)
+        public async Task<User> VerifyPassword(string email, string enteredPassword)
         {
-            var user = _context.Users.SingleOrDefault(u => u.Email == email);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
 
             if (user == null)
             {
-                return false;
+                return null;
             }
 
             var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, enteredPassword);
-            return result == PasswordVerificationResult.Success;
+            return result == PasswordVerificationResult.Success ? user : null;
         }
     }
 }
