@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   email: string = '';
   password: string = '';
   error: string = '';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private globalService: GlobalService) { }
 
   login(): void {
     this.error = '';
@@ -24,7 +26,7 @@ export class LoginComponent {
 
       const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
-      this.http.post('https://localhost:7167/api/Auth/login', body.toString(), { headers, responseType: 'text' })
+      this.http.post(`${this.globalService.apiEndpoint}/login`, body.toString(), { headers, responseType: 'text', withCredentials: true })
         .subscribe({
           next: (response: any) => {
             console.log('Login successful:', response);
