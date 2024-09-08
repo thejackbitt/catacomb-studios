@@ -1,1 +1,16 @@
-<p>dashboard works!</p>
+<div *ngIf="loading">
+  <p>Loading session information...</p>
+</div>
+
+<div *ngIf="!loading && userEmail && userPfp !== null">
+  <br />
+  <br />
+  <br />
+  <p>Username: {{ userName }}</p>
+  <p>Email: {{ userEmail }}</p>
+  <p>Profile Picture: {{ userPfp }}</p>
+</div>
+
+<div *ngIf="!loading && !userEmail">
+  <p>No session information available. Please log in.</p>
+</div>
