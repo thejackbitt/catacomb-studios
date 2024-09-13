@@ -16,8 +16,25 @@ namespace CatacombApp.Server.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task RegisterUser(string username, string email, string password, int profilePic = 0)
+        public class RegistrationResult
         {
+            public bool IsSuccess { get; set; }
+            public string Message { get; set; }
+        }
+
+
+        public async Task<RegistrationResult> RegisterUser(string username, string email, string password, int profilePic = 0)
+        {
+            var existingUser = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
+            if (existingUser != null)
+            {
+                return new RegistrationResult
+                {
+                    IsSuccess = false,
+                    Message = "An account with this email already exists."
+                };
+            }
+
             int lastUuid = await _context.Users.MaxAsync(u => (int?)u.Uuid) ?? 0;
             int newUuid = lastUuid + 1;
 
@@ -33,7 +50,15 @@ namespace CatacombApp.Server.Services
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            return new RegistrationResult
+            {
+                IsSuccess = true,
+                Message = "Registration successful."
+            };
         }
+
+
 
         public async Task<User> VerifyPassword(string email, string enteredPassword)
         {
@@ -47,5 +72,22 @@ namespace CatacombApp.Server.Services
             var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, enteredPassword);
             return result == PasswordVerificationResult.Success ? user : null;
         }
+
+        public async Task<bool> DeleteUser(string email)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+
     }
 }
