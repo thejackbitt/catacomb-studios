@@ -7,6 +7,10 @@
   --header-h: 80px;
 }
 
+body {
+transition: opacity 0.5s ease;
+}
+
 @font-face {
   font-family: 'PoorRichard';
   src: url('assets/Fonts/POORICH.TTF') format('truetype');
@@ -75,3 +79,4 @@ h3 {
 .orange {
   color: #f15a24;
 }
+
