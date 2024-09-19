@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qiPm3OUmIIZITUC5QiFbN4+bBbnVFMTn8vSh4QAh3ZyXuwAfeDWipK1wllPNMwPbZuYRMbrXn4B70bZRNkYh8w==",
+  "dgSpecHash": "t92RuXa/Yk8=",
   "success": true,
-  "projectFilePath": "F:\\Coding_Projects\\net_projects\\catacomb-studios\\CatacombApp.Server\\CatacombApp.Server.csproj",
+  "projectFilePath": "C:\\Coding\\catacomb-studios\\CatacombApp.Server\\CatacombApp.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jackb\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\jackb\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

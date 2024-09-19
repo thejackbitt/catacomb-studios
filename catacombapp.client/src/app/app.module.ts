@@ -25,6 +25,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FourohfourComponent } from './fourohfour/fourohfour.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LazyLoaderComponent } from './lazy-loader/lazy-loader.component';
+import { SocialComponent } from './social/social.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LazyLoaderComponent } from './lazy-loader/lazy-loader.component';
     SignupComponent,
     FourohfourComponent,
     DashboardComponent,
-    LazyLoaderComponent
+    LazyLoaderComponent,
+    SocialComponent
   ],
   imports: [
       BrowserModule,
