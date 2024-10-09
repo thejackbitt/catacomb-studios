@@ -35,6 +35,36 @@ namespace CatacombApp.Server.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task<User> GetUserByUuidAsync(string uuid)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Uuid.ToString() == uuid);
+        }
+
+
+        public async Task<bool> UpdateUser(User user)
+        {
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Uuid == user.Uuid);
+
+            if (existingUser == null)
+            {
+                return false;
+            }
+
+            existingUser.Email = user.Email;
+            existingUser.Pfp = user.Pfp;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException)
+            {
+                return false;
+            }
+        }
+
+
         public async Task<User> VerifyPassword(string email, string enteredPassword)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);

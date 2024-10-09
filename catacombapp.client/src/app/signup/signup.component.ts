@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GlobalService } from '../services/global.service';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,12 +15,14 @@ export class SignupComponent {
   password: string = '';
   error: string = '';
 
-  constructor(private http: HttpClient, private router: Router, private globalService: GlobalService) { }
+  constructor(private http: HttpClient, private router: Router, private globalService: GlobalService, private loaderService: LoaderService) { }
 
   signup(): void {
     this.error = '';
 
     if (this.username && this.email && this.password) {
+      this.loaderService.showLoader();
+
       const body = new HttpParams()
         .set('username', this.username)
         .set('email', this.email)
@@ -32,10 +35,12 @@ export class SignupComponent {
           next: (response: any) => {
             console.log('Registration successful:', response);
             this.router.navigate(['/dashboard']);
+            this.loaderService.hideLoader();
           },
           error: (err: any) => {
             console.log('Error response:', err);
             this.error = err.error?.message || 'Registration failed.';
+            this.loaderService.hideLoader();
           }
         });
     } else {
