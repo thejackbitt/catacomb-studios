@@ -1,16 +1,60 @@
-<div *ngIf="loading">
-  <p>Loading session information...</p>
-</div>
+<div class="dashboard-container">
+  <div *ngIf="!loading && loadedUserEmail && loadedUserPfp !== null">
+    <div class="panes">
+      <div class="pane1">
+        <div class="sub-pane1a">
+          <h1>Welcome, {{ userName }}!</h1>
+          <div class="profile-container">
+            <img src="../../assets/Profiles/{{ setImage(userPfp) }}" alt="Profile image">
+            <div class="edit-icon-container">
+              <div class="edit-icon" (click)="openModal()">
+                <img src="../../assets/NewFolder/edit_icon.svg" />
+              </div>
+            </div>
+          </div>
+          <div class="email-container">
+            <p>Email: {{ userEmail }}</p>
+            <img src="../../assets/NewFolder/edit_icon.svg" (click)="openModal2()" />
+          </div>
+          <a *ngIf="changesToImage && !changesToEmail" href="/dashboard">
+            <button class="logout-btn" (click)="applyChanges()"><strong>Save Changes</strong></button>
+          </a>
+          <a *ngIf="changesToEmail || (changesToEmail && changesToImage)" href="/dashboard?notification=shown">
+            <button class="logout-btn" (click)="applyChanges()"><strong>Save Changes</strong></button>
+          </a>
+          <button *ngIf="!changesToEmail && !changesToImage" class="dead-btn"><strong>Save Changes</strong></button>
+        </div>
+        <div class="sub-pane1b">
+          <a href="/logout">
+            <button class="logout-btn"><strong>Sign Out</strong></button>
+          </a>
+        </div>
+      </div>
+      <div class="pane2">
 
-<div *ngIf="!loading && userEmail && userPfp !== null">
-  <br />
-  <br />
-  <br />
-  <p>Username: {{ userName }}</p>
-  <p>Email: {{ userEmail }}</p>
-  <p>Profile Picture: {{ userPfp }}</p>
-</div>
+      </div>
+    </div>
+  </div>
 
-<div *ngIf="!loading && !userEmail">
-  <p>No session information available. Please log in.</p>
+  <div *ngIf="showNotification" class="notification">
+    Check your inbox. We sent you an email!
+  </div>
+
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content slide-top">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Change Profile Picture</h2>
+      <app-profileselector (returnIdChange)="onProfileSelectorChange($event)"></app-profileselector>
+      <p>Click the arrow buttons to select a different profile picture.</p>
+    </div>
+  </div>
+
+  <div class="modal" *ngIf="isModal2Open">
+    <div class="modal-content slide-top">
+      <span class="close" (click)="closeModal2()">&times;</span>
+      <h2>Change Email</h2>
+      <app-emailselector [(currentEmail)]="editedEmail"></app-emailselector>
+      <p>Please note, you will need to accept the confirmation email for the change to be complete.</p>
+    </div>
+  </div>
 </div>

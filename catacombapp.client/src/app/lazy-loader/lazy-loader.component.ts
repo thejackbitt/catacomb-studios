@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-lazy-loader',
@@ -6,14 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lazy-loader.component.css']
 })
 export class LazyLoaderComponent implements OnInit {
-  isLoading = true;
+  isLoading = false;
   fadeOut = false;
 
-  constructor() { }
+  constructor(private loaderService: LoaderService) { }
 
   ngOnInit(): void {
-    window.addEventListener('load', () => {
-      this.startFadeOut();
+    this.loaderService.loaderState.subscribe((state: boolean) => {
+      if (state) {
+        this.isLoading = true;
+        this.fadeOut = false;
+      } else {
+        this.startFadeOut();
+      }
     });
   }
 

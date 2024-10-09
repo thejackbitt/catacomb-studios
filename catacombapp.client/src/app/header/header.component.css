@@ -1,0 +1,9 @@
+.img-container {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 50px;
+}
+
+.img-container img {
+    width: 100%;
+}

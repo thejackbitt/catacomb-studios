@@ -117,7 +117,6 @@ F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\ne
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\System.Runtime.Caching.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\System.Security.Permissions.dll
-F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\System.Text.Json.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\System.Windows.Extensions.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
