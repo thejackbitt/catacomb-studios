@@ -1,0 +1,43 @@
+.social-container {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  background-color: #333333;
+  position: absolute;
+  width: 100%;
+}
+
+  .social-container p {
+    margin: 20px;
+  }
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  text-align: right;
+  flex: 2;
+  margin-right: 10px;
+}
+
+.social-media-icon {
+  width: 40px;
+  margin: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .social-container {
+    flex-direction: column;
+    height: 120px;
+  }
+
+  .social-container p {
+      margin: 10px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+    .social-container {
+        height: 160px;
+    }
+}

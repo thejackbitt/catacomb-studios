@@ -3,7 +3,8 @@ import { GlobalService } from '../services/global.service';
 import { AuthService } from '../services/auth.service';
 import { SleepService } from '../services/sleep.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HeaderComponent } from '../header/header.component';
 import { ProfileselectorComponent } from '../profileselector/profileselector.component';
 import { EmailselectorComponent } from '../emailselector/emailselector.component';
 
@@ -14,6 +15,7 @@ import { EmailselectorComponent } from '../emailselector/emailselector.component
 })
 export class DashboardComponent implements OnInit, AfterViewChecked {
 
+  uuid: string = '';
   loadedUserEmail: string = '';
   userEmail: string = this.loadedUserEmail;
   editedEmail: string = '';
@@ -62,31 +64,51 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
     this.changesToEmail = true;
   }
 
-  async displayNotification() {
-    await this.sleepService.sleep(1000);
-    this.showNotification = true;
-    await this.sleepService.sleep(3000);
-    this.showNotification = false;
-  }
-
-  applyChanges() {
+  async applyChanges() {
     const updateUrl = `${this.globalService.apiEndpoint}/update`;
     const updatePayload = {
       newEmail: this.loadedUserEmail,
       newProfilePic: this.userPfp
     };
+    if (this.changesToEmail) {
+      await this.sendEmailChangeNotification(this.userName, this.loadedUserEmail, this.editedEmail, this.uuid);
+    }
 
     this.http.post(updateUrl, updatePayload, { withCredentials: true })
       .subscribe(
-        (response: any) => {
+        async (response: any) => {
           console.log('Profile updated successfully:', response);
-          this.displayNotification();
+
         },
         (error: any) => {
           console.error('Error updating profile:', error);
         }
       );
   }
+
+  async sendEmailChangeNotification(name: string, oldEmail: string, newEmail: string, uuid: string) {
+    const emailUrl = `${this.globalService.apiEndpoint}/send-email-change`;
+
+    const body = new HttpParams()
+      .set('userName', name)
+      .set('oldEmail', oldEmail)
+      .set('newEmail', newEmail)
+      .set('userId', uuid);
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
+    this.http.post(emailUrl, body.toString(), { headers, withCredentials: true })
+      .subscribe(
+        (response: any) => {
+          console.log('Email change notification sent:', response);
+        },
+        (error: any) => {
+          console.error('Error sending email notification:', error);
+        }
+      );
+  }
+
+
 
   setImage(num: string) {
     switch (num) {
@@ -146,6 +168,7 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
         this.editedEmail = this.userEmail;
         this.userPfp = JSON.stringify(JSON.parse(data.profilePic) + 1);
         this.userName = data.username;
+        this.uuid = data.uuid;
         this.loading = false;
         this.checkNotification();
       },

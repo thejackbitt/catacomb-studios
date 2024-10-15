@@ -1,17 +1,21 @@
-using Microsoft.EntityFrameworkCore;
-using DotNetEnv;
-using CatacombApp.Server;
-using Microsoft.AspNetCore.Identity;
 using CatacombApp.Server.Models;
 using CatacombApp.Server.Services;
+using CatacombApp.Server;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Load environment variables
 DotNetEnv.Env.Load();
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY");
+var smtpHost = Environment.GetEnvironmentVariable("SMTP_HOST");
+var smtpPort = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
+var smtpUser = Environment.GetEnvironmentVariable("SMTP_USER");
+var smtpPass = Environment.GetEnvironmentVariable("SMTP_PASS");
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -25,20 +29,32 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddIdentity<User, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<UserService>();
+
+builder.Services.AddScoped<IEmailService>(sp => new SmtpEmailService(
+    smtpHost,
+    smtpPort,
+    smtpUser,
+    smtpPass,
+    sp.GetRequiredService<TokenService>()
+));
+
+builder.Services.AddScoped<TokenService>(sp => new TokenService(secretKey));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp",
         policy => policy.WithOrigins("https://localhost:4200")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials());
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
 });
-
 
 var app = builder.Build();
 
@@ -59,12 +75,9 @@ else
 
 app.UseCors("AllowAngularApp");
 app.UseSession();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

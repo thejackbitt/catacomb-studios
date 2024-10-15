@@ -75,3 +75,9 @@
   stroke-dashoffset: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .siderbar-options {
+    width: 90vw;
+  }
+}
+

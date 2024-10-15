@@ -20,3 +20,21 @@ th, td {
 table {
   margin: 0 auto;
 }
+
+.pre-meta-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-image: url("../assets/NewFolder/catacomb.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.meta-body {
+    max-width: 1300px;
+    position: relative;
+}

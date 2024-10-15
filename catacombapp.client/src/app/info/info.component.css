@@ -18,3 +18,10 @@
 .info-box p {
     margin: 15px 15% 0px 15%;
 }
+
+@media screen and (max-width: 450px) {
+    .info-box {
+        height: auto;
+        padding: 35px 0px 35px 0px;
+    }
+}

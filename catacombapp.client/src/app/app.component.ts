@@ -13,16 +13,16 @@ export class AppComponent implements OnInit {
 
   linkInput = [
     {
-      preview: 'Test Link 1',
-      link: '#'
+      preview: 'Home',
+      link: '/'
     },
     {
-      preview: 'Test Link 2',
-      link: '#'
+      preview: 'Gonkville',
+      link: '/gonkville'
     },
     {
-      preview: 'Test Link 3',
-      link: '#'
+      preview: 'About Us',
+      link: '/about'
     }
   ];
 
