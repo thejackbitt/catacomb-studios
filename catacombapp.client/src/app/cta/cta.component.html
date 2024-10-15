@@ -1,16 +1,24 @@
 <section class="cta-box">
   <h3 style="color:white;">{{ ctaOutput[0].title }}</h3>
-  <div class="card-holder">
-    <div class="cta-card" [class.ctaClicked] = "ctaClicked == true" (click) = "changeCtaClass()">
-      <img src="{{ ctaOutput[0].image }}"/>
+  <div class="cta-module-container">
+    <div class="cta-module-1">
+      <div class="card-holder">
+        <div class="cta-card" [class.ctaClicked]="ctaClicked == true" (click)="changeCtaClass()">
+          <img src="{{ ctaOutput[0].image }}" />
+        </div>
+      </div>
+      </div>
+      <div class="cta-module-2">
+        <div class="cta-paragraph">
+          <p>
+            {{ ctaOutput[0].body }}
+          </p>
+          @if (ctaOutput[0].buttonType === "AMZN") {
+          <a href="{{ ctaOutput[0].buttonHref }}">
+            <button class="cta-btn"><strong>Buy Now on Amazon ></strong></button>
+          </a>
+          }
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="cta-paragraph">
-    @if (ctaOutput[0].buttonType === "AMZN") {
-    <button class="cta-btn"><strong>Buy Now on Amazon ></strong></button>
-    }
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.
-    </p>
-  </div>
 </section>

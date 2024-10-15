@@ -1,5 +1,5 @@
 .cta-box {
-    height: 1000px;
+    height: 640px;
     background-color: #424242;
     position: relative;
     display: flex;
@@ -35,7 +35,7 @@
 .cta-card {
   height:400px;
   width: 400px;
-  transform: rotateY(-25deg);
+  transform: rotateY(-10deg);
   -webkit-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
   box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
@@ -105,7 +105,87 @@
 }
 
 .cta-paragraph {
-    padding: 35px 25px;
     width: 500px;
+}
+
+.cta-paragraph p {
+    padding-bottom: 15px;
+}
+
+.cta-module-container {
+    display: flex;
+    position: relative;
+    padding: 35px 10px 10px 35px;
+    height: 500px;
+    align-items: start;
+}
+
+.cta-module-1 {
+    flex: 1;
+    padding: 10px;
+}
+
+.cta-module-2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: start;
+  padding: 10px;
+}
+
+@media screen and (max-width: 870px) {
+  .cta-module-container {
+    flex-direction: column;
+    padding: 15px 0px 15px 0px;
+  }
+
+    .cta-module-1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cta-module-2 {
+        align-items: center;
+    }
+
+    .cta-box {
+        height: 900px;
+    }
+
+    .cta-paragraph {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+  .cta-module-container {
+      padding: 10px;
+  }
+
+  .cta-module-2 {
+      margin: 0 auto;
+  }
+
+  .card-holder {
+      height: 310px;
+      width: 310px;
+  }
+
+  .cta-card {
+    height: 300px;
+    width: 300px;
+  }
+
+  .ctaClicked {
+    width: 275px;
+    height: 275px;
+  }
+
+  .cta-paragraph {
+      width: 300px;
+  }
 }
 

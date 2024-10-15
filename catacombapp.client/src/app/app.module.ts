@@ -1,4 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './loader.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -27,6 +29,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LazyLoaderComponent } from './lazy-loader/lazy-loader.component';
 import { ProfileselectorComponent } from './profileselector/profileselector.component';
 import { EmailselectorComponent } from './emailselector/emailselector.component';
+import { ChangeemailComponent } from './changeemail/changeemail.component';
+import { ChangeemailpageComponent } from './changeemailpage/changeemailpage.component';
+import { ForgorpageComponent } from './forgorpage/forgorpage.component';
+import { ForgorComponent } from './forgor/forgor.component';
+import { ResetpwComponent } from './resetpw/resetpw.component';
+import { ResetpwpageComponent } from './resetpwpage/resetpwpage.component';
+import { PwconfirmationpageComponent } from './pwconfirmationpage/pwconfirmationpage.component';
+import { PwconfirmationComponent } from './pwconfirmation/pwconfirmation.component';
+import { ForgorconfirmationComponent } from './forgorconfirmation/forgorconfirmation.component';
+import { ForgorconfirmationpageComponent } from './forgorconfirmationpage/forgorconfirmationpage.component';
+import { SocialComponent } from './social/social.component';
+import { GonkvillepageComponent } from './gonkvillepage/gonkvillepage.component';
+import { GonkvilleComponent } from './gonkville/gonkville.component';
+import { AboutComponent } from './about/about.component';
+import { AboutpageComponent } from './aboutpage/aboutpage.component';
+import { Hero2Component } from './hero2/hero2.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +70,23 @@ import { EmailselectorComponent } from './emailselector/emailselector.component'
     DashboardComponent,
     LazyLoaderComponent,
     ProfileselectorComponent,
-    EmailselectorComponent
+    EmailselectorComponent,
+    ChangeemailComponent,
+    ChangeemailpageComponent,
+    ForgorpageComponent,
+    ForgorComponent,
+    ResetpwComponent,
+    ResetpwpageComponent,
+    PwconfirmationpageComponent,
+    PwconfirmationComponent,
+    ForgorconfirmationComponent,
+    ForgorconfirmationpageComponent,
+    SocialComponent,
+    GonkvillepageComponent,
+    GonkvilleComponent,
+    AboutComponent,
+    AboutpageComponent,
+    Hero2Component
   ],
   imports: [
       BrowserModule,
@@ -60,7 +94,7 @@ import { EmailselectorComponent } from './emailselector/emailselector.component'
       AppRoutingModule,
       FormsModule
   ],
-  providers: [SleepService],
+  providers: [SleepService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

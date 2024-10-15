@@ -1,0 +1,16 @@
+<div class="account-page">
+  <div class="password-container">
+    <h2>Reset Password</h2>
+    <p>Enter your new password here.</p>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="password" required>
+    </div>
+    <div class="input-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" [(ngModel)]="confirmPassword" required>
+    </div>
+    <button class="password-btn margin-top" (click)="resetPassword()">Change Password</button>
+    <div class="error">{{ error }}</div>
+  </div>
+</div>

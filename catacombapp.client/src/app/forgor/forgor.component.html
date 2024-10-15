@@ -1,0 +1,12 @@
+<div class="account-page">
+  <div class="forgor-container">
+    <h2>Forgot Password</h2>
+    <p>Enter your email and we'll send you a password reset link.</p>
+    <div class="input-group margin-top">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="email" required>
+    </div>
+    <button class="send-btn margin-top" (click)="requestPasswordReset()">Send Link</button>
+    <div class="error">{{ error }}</div>
+  </div>
+</div>

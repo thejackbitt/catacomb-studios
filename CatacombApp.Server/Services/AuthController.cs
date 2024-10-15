@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CatacombApp.Server.Services;
 using CatacombApp.Server.Models;
+using Azure.Identity;
 
 namespace CatacombApp.Server.Controllers
 {
@@ -10,10 +11,14 @@ namespace CatacombApp.Server.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly TokenService _tokenService;
+        private readonly IEmailService _emailService;
 
-        public AuthController(UserService userService)
+        public AuthController(UserService userService, TokenService tokenService, IEmailService emailService)
         {
             _userService = userService;
+            _tokenService = tokenService;
+            _emailService = emailService;
         }
 
         [HttpPost("register")]
@@ -56,6 +61,60 @@ namespace CatacombApp.Server.Controllers
             {
                 return StatusCode(500, "Failed to update user details.");
             }
+        }
+
+        [HttpPost("change-email")]
+        public async Task<IActionResult> ChangeEmail([FromForm] string token)
+        {
+            var principal = _tokenService.ValidateToken(token);
+            if (principal == null)
+            {
+                return BadRequest("Invalid or expired token.");
+            }
+            var userIdString = principal.FindFirst("userId")?.Value;
+            var newEmail = principal.FindFirst("newEmail")?.Value;
+
+            if (!int.TryParse(userIdString, out int userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+            user.Email = newEmail;
+            await _userService.UpdateUser(user);
+
+            return Ok("Email updated successfully.");
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromForm] string token, [FromForm] string newPassword)
+        {
+            var principal = _tokenService.ValidateToken(token);
+            if (principal == null)
+            {
+                return BadRequest("Invalid or expired token.");
+            }
+
+            var userIdString = principal.FindFirst("userId")?.Value;
+            if (!int.TryParse(userIdString, out int userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var hashedPassword = _userService.HashPassword(user, newPassword);
+            user.PasswordHash = hashedPassword;
+            await _userService.UpdateUser(user);
+
+            return Ok("Password updated successfully.");
         }
 
 
@@ -107,6 +166,51 @@ namespace CatacombApp.Server.Controllers
                 return Unauthorized("No active session.");
             }
         }
+
+        [HttpPost("remove")]
+        public async Task<IActionResult> Remove([FromForm] string email, [FromForm] string password)
+        {
+            var user = await _userService.VerifyPassword(email, password);
+            if (user != null)
+            {
+                await _userService.DeleteUser(email);
+
+                return Ok($"Account removed successfully. Your account has been deleted.");
+            }
+            else
+            {
+                return Unauthorized("Invalid credentials.");
+            }
+        }
+
+        [HttpPost("send")]
+        public async Task<IActionResult> SendEmail([FromForm] string recipientEmail, [FromForm] string subject, [FromForm] string body)
+        {
+            await _emailService.SendEmailAsync(recipientEmail, subject, body);
+            return Ok("Email sent successfully.");
+        }
+
+
+        [HttpPost("send-email-change")]
+        public async Task<IActionResult> SendEmailChangeNotification([FromForm] string userName, [FromForm] string oldEmail, [FromForm] string newEmail, [FromForm] string userId)
+        {
+            await _emailService.SendEmailChangeNotificationAsync(userName, oldEmail, newEmail, userId);
+            return Ok("Email change notification sent.");
+        }
+
+        [HttpPost("send-password-change")]
+        public async Task<IActionResult> RequestPasswordReset([FromForm] string email)
+        {
+            var user = await _userService.GetUserByEmailAsync(email);
+            if (user == null)
+            {
+                return NotFound("User with this email not found.");
+            }
+
+            await _emailService.SendPasswordChangeLinkAsync(user.UserName, user.Email, user.Uuid.ToString());
+            return Ok("Password reset link sent.");
+        }
+
 
     }
 }

@@ -1,6 +1,7 @@
 .dashboard-container {
     background-color: dimgray;
     min-height: 900px;
+    width: 1300px;
 }
 
 .panes {
@@ -265,4 +266,32 @@
 
 .transparent {
     opacity: 0%;
+}
+
+@media screen and (max-width: 1300px) {
+    .dashboard-container {
+        width: 100vw;
+    }
+
+    .pane2 {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .panes {
+        flex-direction: column;
+    }
+
+    .pane1 {
+        max-width: 100%;
+    }
+
+    .profile-container {
+        width: 270px;
+    }
+
+    .pane2 {
+        margin-top: 35px;
+    }
 }

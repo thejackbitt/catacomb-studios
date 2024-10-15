@@ -9,7 +9,9 @@
       <label for="password">Password</label>
       <input type="password" id="password" [(ngModel)]="password" required>
     </div>
-    <button class="login-btn" (click)="login()">Login</button>
+    <a class="cta-link" href="/forgot-password">Forgot password?</a>
+    <button class="login-btn margin-top" (click)="login()">Login</button>
     <div class="error">{{ error }}</div>
+    <a class="cta-link" href="/signup">Don't have an account?</a>
   </div>
 </div>
