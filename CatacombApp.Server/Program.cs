@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load environment variables
 DotNetEnv.Env.Load();
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY");
@@ -37,7 +36,8 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<UserService>();
 
-if (smtpHost != null && smtpPort != null && smtpUser != null && smtpPass != null)
+if (!string.IsNullOrEmpty(smtpHost) && !string.IsNullOrEmpty(smtpPort) &&
+    !string.IsNullOrEmpty(smtpUser) && !string.IsNullOrEmpty(smtpPass))
 {
     builder.Services.AddScoped<IEmailService>(sp => new SmtpEmailService(
         smtpHost,
@@ -52,11 +52,17 @@ builder.Services.AddScoped<TokenService>(sp => new TokenService(secretKey));
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp",
-        policy => policy.WithOrigins("https://localhost:4200")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials());
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        var origins = builder.Environment.IsDevelopment()
+            ? new[] { "https://localhost:4200" }
+            : new[] { "https://catacombstudios.com" };
+
+        policy.WithOrigins(origins)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
 });
 
 var app = builder.Build();
@@ -76,15 +82,16 @@ else
     app.UseHsts();
 }
 
-app.UseCors("AllowAngularApp");
+app.UseCors("AllowSpecificOrigins");
 app.UseSession();
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
