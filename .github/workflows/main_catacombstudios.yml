@@ -56,6 +56,7 @@ jobs:
       - name: Copy Angular build to wwwroot
         run: |
           if (-Not (Test-Path ./publish/wwwroot)) { mkdir ./publish/wwwroot }
+          Remove-Item ./publish/wwwroot/* -Recurse -Force -ErrorAction SilentlyContinue
           cp -r catacombapp.client/dist/catacombapp.client/* ./publish/wwwroot
           ls ./publish/wwwroot
 
