@@ -52,6 +52,12 @@ jobs:
           cd catacombapp.client
           npm run build --prod
 
+      # Copy Angular build output to server's wwwroot
+      - name: Copy Angular build to wwwroot
+        run: |
+          mkdir -p CatacombApp.Server/wwwroot
+          cp -r catacombapp.client/dist/catacombapp.client/* CatacombApp.Server/wwwroot
+
       # Upload artifacts for deployment
       - name: Upload server artifact
         uses: actions/upload-artifact@v4
