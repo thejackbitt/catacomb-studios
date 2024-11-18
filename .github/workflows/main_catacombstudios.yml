@@ -21,11 +21,13 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      # Build the server project
+      - name: Build server
+        run: dotnet build CatacombApp.Server/CatacombApp.Server.csproj --configuration Release
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+      # Publish the server project
+      - name: Publish server
+        run: dotnet publish CatacombApp.Server/CatacombApp.Server.csproj -c Release -o "${{env.DOTNET_ROOT}}/server"
         env:
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
@@ -34,11 +36,34 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
 
-      - name: Upload artifact for deployment job
+      # Install dependencies and build the Angular client
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - name: Install client dependencies
+        run: |
+          cd catacombapp.client
+          npm install
+
+      - name: Build client
+        run: |
+          cd catacombapp.client
+          npm run build --prod
+
+      # Upload artifacts for deployment
+      - name: Upload server artifact
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: server
+          path: ${{env.DOTNET_ROOT}}/server
+
+      - name: Upload client artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: client
+          path: catacombapp.client/dist/catacombapp.client
 
   deploy:
     runs-on: windows-latest
@@ -47,14 +72,19 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write # This is required for requesting the JWT
 
     steps:
-      - name: Download artifact from build job
+      - name: Download server artifact
         uses: actions/download-artifact@v4
         with:
-          name: .net-app
-      
+          name: server
+
+      - name: Download client artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: client
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -69,4 +99,3 @@ jobs:
           app-name: 'CatacombStudios'
           slot-name: 'Production'
           package: .
-          
