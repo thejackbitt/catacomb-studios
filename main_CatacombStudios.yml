@@ -1,0 +1,48 @@
+name: Deploy ASP.NET Core/Angular App to Azure
+
+on:
+  push:
+    branches:
+      - main 
+  workflow_dispatch: 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+
+    - name: Install Angular dependencies
+      working-directory: ./catacombapp.client
+      run: npm install
+
+    - name: Build Angular app
+      working-directory: ./catacombapp.client
+      run: ng build --prod
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
+
+    - name: Restore .NET dependencies
+      run: dotnet restore
+
+    - name: Build .NET project
+      run: dotnet build --configuration Release
+
+    - name: Publish .NET app
+      run: dotnet publish --configuration Release --output ./publish
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: CatacombStudios
+        slot-name: Production
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+        package: ./publish
