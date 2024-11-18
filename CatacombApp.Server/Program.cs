@@ -11,7 +11,7 @@ DotNetEnv.Env.Load();
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY");
 var smtpHost = Environment.GetEnvironmentVariable("SMTP_HOST");
-var smtpPort = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
+var smtpPort = Environment.GetEnvironmentVariable("SMTP_PORT");
 var smtpUser = Environment.GetEnvironmentVariable("SMTP_USER");
 var smtpPass = Environment.GetEnvironmentVariable("SMTP_PASS");
 
@@ -37,13 +37,16 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<UserService>();
 
-builder.Services.AddScoped<IEmailService>(sp => new SmtpEmailService(
-    smtpHost,
-    smtpPort,
-    smtpUser,
-    smtpPass,
-    sp.GetRequiredService<TokenService>()
-));
+if (smtpHost != null && smtpPort != null && smtpUser != null && smtpPass != null)
+{
+    builder.Services.AddScoped<IEmailService>(sp => new SmtpEmailService(
+        smtpHost,
+        int.Parse(smtpPort),
+        smtpUser,
+        smtpPass,
+        sp.GetRequiredService<TokenService>()
+    ));
+}
 
 builder.Services.AddScoped<TokenService>(sp => new TokenService(secretKey));
 

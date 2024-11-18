@@ -122,7 +122,7 @@ namespace CatacombApp.Server.Controllers
         public async Task<IActionResult> Login([FromForm] string email, [FromForm] string password)
         {
             var user = await _userService.VerifyPassword(email, password);
-            if (user != null)
+            if (user != null && user.Uuid != null && user.UserName != null && user.Pfp != null)
             {
                 HttpContext.Session.SetString("UserUuid", user.Uuid.ToString());
                 HttpContext.Session.SetString("UserEmail", user.Email);
