@@ -55,7 +55,7 @@ jobs:
       # Copy Angular build output to server's wwwroot
       - name: Copy Angular build to wwwroot
         run: |
-          mkdir -p ./publish/wwwroot
+          if (-Not (Test-Path ./publish/wwwroot)) { mkdir ./publish/wwwroot }
           cp -r catacombapp.client/dist/catacombapp.client/* ./publish/wwwroot
           ls ./publish/wwwroot
 
