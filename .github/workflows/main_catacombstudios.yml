@@ -57,6 +57,7 @@ jobs:
         run: |
           mkdir -p CatacombApp.Server/wwwroot
           cp -r catacombapp.client/dist/catacombapp.client/* CatacombApp.Server/wwwroot
+          ls ./publish/wwwroot
 
       # Upload artifacts for deployment
       - name: Upload server artifact
