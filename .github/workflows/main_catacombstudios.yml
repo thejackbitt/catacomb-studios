@@ -1,4 +1,13 @@
-# Build and deploy ASP.Net Core app to Azure Web App - CatacombStudios
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - CatacombStudios
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -62,6 +71,12 @@ jobs:
           name: server
           path: ./publish
 
+      - name: Upload client artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: client
+          path: catacombapp.client/dist/catacombapp.client
+
   deploy:
     runs-on: windows-latest
     needs: build
@@ -69,7 +84,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write 
+      id-token: write # This is required for requesting the JWT
 
     steps:
       - name: Download server artifact
@@ -79,6 +94,11 @@ jobs:
 
       - name: Verify downloaded artifact
         run: ls -R ${{ github.workspace }}/server
+
+      - name: Download client artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: client
 
       - name: Login to Azure
         uses: azure/login@v2
