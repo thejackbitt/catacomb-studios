@@ -84,7 +84,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # This is required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download server artifact
@@ -93,12 +93,7 @@ jobs:
           name: server
 
       - name: Verify downloaded artifact
-        run: ls -R ${{ github.workspace }}/server
-
-      - name: Download client artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: client
+        run: ls -R ./server
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -113,4 +108,4 @@ jobs:
         with:
           app-name: 'CatacombStudios'
           slot-name: 'Production'
-          package: ${{ github.workspace }}/server
+          package: ./server
