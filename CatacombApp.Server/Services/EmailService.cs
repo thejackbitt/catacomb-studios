@@ -38,7 +38,7 @@ public class SmtpEmailService : IEmailService
 
         var userName = $"{name}";
 
-        var link = $"https://localhost:4200/change-email?token={token}";
+        var link = $"https://catacombstudios.com/change-email?token={token}";
 
         var body = $@"
         <!DOCTYPE html>
@@ -136,7 +136,7 @@ public class SmtpEmailService : IEmailService
 
         var userName = $"{name}";
 
-        var link = $"https://localhost:4200/reset-password?token={token}";
+        var link = $"https://catacombstudios.com/reset-password?token={token}";
 
         var body = $@"
         <!DOCTYPE html>

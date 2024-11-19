@@ -55,7 +55,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins", policy =>
     {
         var origins = builder.Environment.IsDevelopment()
-            ? new[] { "https://localhost:4200" }
+            ? new[] { "https://localhost:4200", "https://localhost:7167" }
             : new[] { "https://catacombstudios.com" };
 
         policy.WithOrigins(origins)
@@ -90,7 +90,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 app.MapFallbackToFile("index.html");
 

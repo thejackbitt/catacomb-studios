@@ -185,3 +185,4 @@ F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\ne
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\MailKit.dll
 F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\MimeKit.dll
+F:\Coding_Projects\net_projects\catacomb-studios\CatacombApp.Server\bin\Debug\net8.0\CatacombApp.Server.staticwebassets.runtime.json
