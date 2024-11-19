@@ -60,12 +60,16 @@ jobs:
           cp -r catacombapp.client/dist/catacombapp.client/* ./publish/wwwroot
           ls ./publish/wwwroot
 
+      # Verify publish output
+      - name: Verify publish output
+        run: ls -R ./publish
+
       # Upload artifacts for deployment
       - name: Upload server artifact
         uses: actions/upload-artifact@v4
         with:
           name: server
-          path: ${{env.DOTNET_ROOT}}/server
+          path: ./publish
 
       - name: Upload client artifact
         uses: actions/upload-artifact@v4
@@ -106,4 +110,5 @@ jobs:
         with:
           app-name: 'CatacombStudios'
           slot-name: 'Production'
-          package: .
+          package: ./publish
+
