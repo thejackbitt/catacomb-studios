@@ -21,61 +21,17 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      # Build the server project
-      - name: Build server
-        run: dotnet build CatacombApp.Server/CatacombApp.Server.csproj --configuration Release
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
 
-      # Publish the server project
-      - name: Publish server
-        run: dotnet publish CatacombApp.Server/CatacombApp.Server.csproj -c Release -o ./publish
-        env:
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      - name: dotnet publish
+        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
-      # Install dependencies and build the Angular client
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22.x'
-
-      - name: Install client dependencies
-        run: |
-          cd catacombapp.client
-          npm install
-
-      - name: Build client
-        run: |
-          cd catacombapp.client
-          npm run build --prod
-
-      # Copy Angular build output to server's wwwroot
-      - name: Copy Angular build to wwwroot
-        run: |
-          if (-Not (Test-Path ./publish/wwwroot)) { mkdir ./publish/wwwroot }
-          Remove-Item ./publish/wwwroot/* -Recurse -Force -ErrorAction SilentlyContinue
-          cp -r catacombapp.client/dist/catacombapp.client/* ./publish/wwwroot
-          ls ./publish/wwwroot
-
-      # Verify publish output
-      - name: Verify publish output
-        run: ls -R ./publish
-
-      # Upload artifacts for deployment
-      - name: Upload server artifact
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: server
-          path: ./publish
-
-      - name: Upload client artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: client
-          path: catacombapp.client/dist/catacombapp.client
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: windows-latest
@@ -84,23 +40,20 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write
+      id-token: write #This is required for requesting the JWT
 
     steps:
-      - name: Download server artifact
+      - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: server
-
-      - name: Verify downloaded artifact
-        run: ls -R ./server
-
+          name: .net-app
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_6D57CAA604B041AB913621B95A993D19 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A0A23DE2ED124995B6F7A471B4054CD7 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E21CAE9963CC4A03B5D96935FD4593C6 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4E8A7510B65C4232A15C869ED9A115DC }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2161A52792A94B239F5718C3722F64AA }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0F366C94E88846C79A663B376D5704D8 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -109,3 +62,4 @@ jobs:
           app-name: 'CatacombStudios'
           slot-name: 'Production'
           package: .
+          
