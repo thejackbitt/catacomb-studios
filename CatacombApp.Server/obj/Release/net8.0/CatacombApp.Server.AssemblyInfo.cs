@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CatacombApp.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8eab2a1b4e89fa54823ea6518f1a14ac7d395ed6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bd2261530b3ed6d9903d0614fd9e5ecc2fa2d80")]
 [assembly: System.Reflection.AssemblyProductAttribute("CatacombApp.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CatacombApp.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
