@@ -45,10 +45,10 @@
   background: rgba(0, 0, 0, 0.28);
   border-radius: 50%;
   color: #fff;
-  font-size: 40px;
+  font-size: 50px;
   height: 40px;
   width: 40px;
-  line-height: 35px;
+  line-height: 0px;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -64,6 +64,11 @@
 
 .carousel-control.next {
   right: 2%;
+}
+
+.carousel-control-inner {
+  top: -18%;
+  position: relative;
 }
 
 .carousel-control:hover {

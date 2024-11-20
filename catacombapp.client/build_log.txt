@@ -1,0 +1,308 @@
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [8.941 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [8.811 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [8.591 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [8.917 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [8.705 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [8.910 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+
+Building the client... 
+- Building...
+
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-NYUMKJE6.js      | main          | 328.29 kB |                80.35 kB
+polyfills-6EAL64PA.js | polyfills     |  33.43 kB |                10.87 kB
+styles-2FTV6XOI.css   | styles        |   5.60 kB |                 1.48 kB
+
+                      | Initial total | 367.32 kB |                92.71 kB
+
+Output location: F:\Coding_Projects\net_projects\catacomb-studios\catacombapp.client\dist\catacombapp.client
+
+Application bundle generation complete. [9.619 seconds]
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/cta/cta.component.css:89:2:
+      89 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] Expected identifier but found "7px" [plugin angular-compiler] [css-syntax-error]
+
+    src/app/dashboard/dashboard.component.css:96:2:
+      96 │   7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+         ╵   ~~~
+
+
+▲ [WARNING] src/app/hero/hero.component.css exceeded maximum budget. Budget 2.00 kB was not met by 133 bytes with a total of 2.13 kB.
+
+
+▲ [WARNING] src/app/profileselector/profileselector.component.css exceeded maximum budget. Budget 2.00 kB was not met by 72 bytes with a total of 2.07 kB.
+
+
+▲ [WARNING] src/app/cta/cta.component.css exceeded maximum budget. Budget 2.00 kB was not met by 291 bytes with a total of 2.28 kB.
+
+
+▲ [WARNING] src/app/dashboard/dashboard.component.css exceeded maximum budget. Budget 2.00 kB was not met by 1.81 kB with a total of 3.81 kB.
+
+

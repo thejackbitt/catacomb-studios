@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class GlobalService {
-  public apiEndpoint: string = 'https://localhost:7167/api/Auth';
+  public apiEndpoint: string = 'http://catacombstudios.com/api/Auth';
 
   constructor() { }
 
